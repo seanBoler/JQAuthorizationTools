@@ -9,10 +9,9 @@
 /* Begin PBXBuildFile section */
 		1EA9222C1FE79EC500A36D95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9222B1FE79EC500A36D95 /* AppDelegate.m */; };
 		1EA9222F1FE79EC500A36D95 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA9222E1FE79EC500A36D95 /* ViewController.m */; };
-		1EA922321FE79EC500A36D95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA922301FE79EC500A36D95 /* Main.storyboard */; };
 		1EA922341FE79EC500A36D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EA922331FE79EC500A36D95 /* Assets.xcassets */; };
-		1EA922371FE79EC500A36D95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EA922351FE79EC500A36D95 /* LaunchScreen.storyboard */; };
 		1EA9223A1FE79EC500A36D95 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA922391FE79EC500A36D95 /* main.m */; };
+		1EA922431FE79F1500A36D95 /* JQAuthorizationTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA922421FE79F1500A36D95 /* JQAuthorizationTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +20,12 @@
 		1EA9222B1FE79EC500A36D95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1EA9222D1FE79EC500A36D95 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1EA9222E1FE79EC500A36D95 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1EA922311FE79EC500A36D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1EA922331FE79EC500A36D95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1EA922361FE79EC500A36D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EA922381FE79EC500A36D95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EA922391FE79EC500A36D95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1EA922411FE79F1500A36D95 /* JQAuthorizationTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JQAuthorizationTools.h; sourceTree = "<group>"; };
+		1EA922421FE79F1500A36D95 /* JQAuthorizationTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JQAuthorizationTools.m; sourceTree = "<group>"; };
+		1EABF6691FE8FF3B00AFFB25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,17 +58,26 @@
 		1EA922291FE79EC500A36D95 /* JQAuthorizationTool */ = {
 			isa = PBXGroup;
 			children = (
+				1EA922401FE79ED800A36D95 /* AuthorizationTool */,
 				1EA9222A1FE79EC500A36D95 /* AppDelegate.h */,
 				1EA9222B1FE79EC500A36D95 /* AppDelegate.m */,
 				1EA9222D1FE79EC500A36D95 /* ViewController.h */,
 				1EA9222E1FE79EC500A36D95 /* ViewController.m */,
-				1EA922301FE79EC500A36D95 /* Main.storyboard */,
 				1EA922331FE79EC500A36D95 /* Assets.xcassets */,
-				1EA922351FE79EC500A36D95 /* LaunchScreen.storyboard */,
+				1EABF6691FE8FF3B00AFFB25 /* LaunchScreen.storyboard */,
 				1EA922381FE79EC500A36D95 /* Info.plist */,
 				1EA922391FE79EC500A36D95 /* main.m */,
 			);
 			path = JQAuthorizationTool;
+			sourceTree = "<group>";
+		};
+		1EA922401FE79ED800A36D95 /* AuthorizationTool */ = {
+			isa = PBXGroup;
+			children = (
+				1EA922411FE79F1500A36D95 /* JQAuthorizationTools.h */,
+				1EA922421FE79F1500A36D95 /* JQAuthorizationTools.m */,
+			);
+			path = AuthorizationTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,9 +138,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EA922371FE79EC500A36D95 /* LaunchScreen.storyboard in Resources */,
 				1EA922341FE79EC500A36D95 /* Assets.xcassets in Resources */,
-				1EA922321FE79EC500A36D95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,30 +151,12 @@
 			files = (
 				1EA9222F1FE79EC500A36D95 /* ViewController.m in Sources */,
 				1EA9223A1FE79EC500A36D95 /* main.m in Sources */,
+				1EA922431FE79F1500A36D95 /* JQAuthorizationTools.m in Sources */,
 				1EA9222C1FE79EC500A36D95 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		1EA922301FE79EC500A36D95 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1EA922311FE79EC500A36D95 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1EA922351FE79EC500A36D95 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1EA922361FE79EC500A36D95 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1EA9223B1FE79EC500A36D95 /* Debug */ = {
@@ -278,12 +267,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9U8P46C2EW;
 				INFOPLIST_FILE = JQAuthorizationTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AuthorizationTool.JQAuthorizationTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -291,12 +284,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9U8P46C2EW;
 				INFOPLIST_FILE = JQAuthorizationTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AuthorizationTool.JQAuthorizationTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
