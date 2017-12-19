@@ -37,80 +37,72 @@
              2.引入 #import "JQAuthorizationTools.h"
              
              
-             
-![image](https://github.com/seanBoler/JQAuthorizationTools/blob/master/JQAuthorizationTool/authorizationToos.gif)
-
-             
-             
-             
  ## 获取/判断相机访问权限
  
 ```
-         #pragma mark            --- 获取用户相机权限 ---
-         /**
-             获取用户的相机访问权限。
-             authorized     用户允许访问相机
-             denied         用户拒绝当前应用访问相机
-             restricted     因为系统原因, 无法访问相机
-             noCamera       没有检测到相机
-         */
+#pragma mark            --- 获取用户相机权限 ---
+/**
+	获取用户的相机访问权限。
+	authorized     用户允许访问相机
+	denied         用户拒绝当前应用访问相机
+	restricted     因为系统原因, 无法访问相机
+	noCamera       没有检测到相机
+*/
          
-         + (void)AVCameraAuthorizationTools_StatusAuthorizedBlock:(void (^)(void))authorized
-                                                StatusDeniedBlock:(void (^)(void))denied
-                                            StatusRestrictedBlock:(void (^)(void))restricted
-                                      EquipmentWithoutCameraBlock:(void (^)(void))noCamera;
++ (void)AVCameraAuthorizationTools_StatusAuthorizedBlock:(void (^)(void))authorized
+         StatusDeniedBlock:(void (^)(void))denied
+	StatusRestrictedBlock:(void (^)(void))restricted
+	EquipmentWithoutCameraBlock:(void (^)(void))noCamera;
  
-
-          [JQAuthorizationTools AVCameraAuthorizationTools_StatusAuthorizedBlock:^{           //已授权
-              [self alerviewmessage:@"相机权限已开启"];
-          } StatusDeniedBlock:^{                                         //已关闭
+      [JQAuthorizationTools AVCameraAuthorizationTools_StatusAuthorizedBlock:^{           //已授权
+          [self alerviewmessage:@"相机权限已开启"];
+      } StatusDeniedBlock:^{                                         //已关闭
           [self alertViewControllerWithmessage:[NSString stringWithFormat:@"相机权限未开启 \n 可通过 [设置 -> 隐私 -> 相机 - %@] 打开访问开关",_app_name]
       actionBlock:^(UIAlertAction * _Nonnull action) {
       
           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-          }];
-          } StatusRestrictedBlock:^{                                     //限制访问
-              [self alerviewmessage:@"相机访问被限制"];
-          } EquipmentWithoutCameraBlock:^{                               //未检测到功能
-              [self alerviewmessage:@"未检测到您的相机"];
       }];
- 
+      } StatusRestrictedBlock:^{                                     //限制访问
+          [self alerviewmessage:@"相机访问被限制"];
+       } EquipmentWithoutCameraBlock:^{                               //未检测到功能
+          [self alerviewmessage:@"未检测到您的相机"];
+      }];
 ```
       
       
 ## 获取/判断相册权限
 
 ```
-        #pragma mark            ---  获取相册权限  ---
-        /**
-            authorized         用户允许访问相册
-            denied             用户拒绝当前应用访问相册
-            restricted         因为系统原因, 无法访问相册
-            noPhoto            没有检测到相册
-        */
-        + (void)UIImagePickerStatus_AuthorizedBlock:(void(^)(void))authorized
-                                    DeniedBlock:(void(^)(void))denied
-                                    RestrictedBlock:(void(^)(void))restricted
-                                    noPhotoBlock:(void(^)(void))noPhoto;
+#pragma mark            ---  获取相册权限  ---
+/**
+	authorized         用户允许访问相册
+	denied             用户拒绝当前应用访问相册
+	restricted         因为系统原因, 无法访问相册
+	noPhoto            没有检测到相册
+*/
++ (void)UIImagePickerStatus_AuthorizedBlock:(void(^)(void))authorized
+	DeniedBlock:(void(^)(void))denied
+	RestrictedBlock:(void(^)(void))restricted
+	noPhotoBlock:(void(^)(void))noPhoto;
 ```
 
 
  ```
-        [JQAuthorizationTools UIImagePickerStatus_AuthorizedBlock:^{                        //已授权
-                [self alerviewmessage:@"相册权限已开启"];
-        } DeniedBlock:^{                                                                    //已关闭
-                [self alertViewControllerWithmessage:[NSString stringWithFormat:@"相册权限未开启 \n 可通过 [设置 -> 隐私 -> 相册 - %@] 打开访问开关",_app_name]
-        actionBlock:^(UIAlertAction * _Nonnull action) {
+	[JQAuthorizationTools UIImagePickerStatus_AuthorizedBlock:^{                        //已授权
+        [self alerviewmessage:@"相册权限已开启"];
+	} DeniedBlock:^{                                                                    //已关闭
+        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"相册权限未开启 \n 可通过 [设置 -> 隐私 -> 相册 - %@] 打开访问开关",_app_name]
+	actionBlock:^(UIAlertAction * _Nonnull action) {
         
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         
-        }];
-        } RestrictedBlock:^{                                                                //限制访问
-                [self alerviewmessage:@"相册访问被限制"];
+	}];
+	} RestrictedBlock:^{                                                                //限制访问
+        [self alerviewmessage:@"相册访问被限制"];
         
-        } noPhotoBlock:^{                                                                   //未检测到功能
-                [self alerviewmessage:@"未检测到您的相册"];
-        }];
+	} noPhotoBlock:^{                                                                   //未检测到功能
+	[self alerviewmessage:@"未检测到您的相册"];
+	}];
         
 ```
         
@@ -118,37 +110,39 @@
 ## 获取/判断麦克风权限
 
 
-```  #pragma mark            ---   获取麦克风   ---
-        /**
-            authorized         用户允许访问麦克风
-            restricted         因为系统原因, 无法访问麦克风
-            denied             用户拒绝当前应用访问麦克风
-            noAudio            没有检测到麦克风
-        */
-        + (void)AudioAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
-                             DeniedBlock:(void(^)(void))denied
-                             RestrictedBlock:(void(^)(void))restricted
-                             noAudioBlock:(void(^)(void))noAudio;
+```
+#pragma mark            ---   获取麦克风   ---
+/**
+	authorized         用户允许访问麦克风
+	restricted         因为系统原因, 无法访问麦克风
+	denied             用户拒绝当前应用访问麦克风
+	noAudio            没有检测到麦克风
+*/
++ (void)AudioAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
+	DeniedBlock:(void(^)(void))denied
+	RestrictedBlock:(void(^)(void))restricted
+	noAudioBlock:(void(^)(void))noAudio;
         
 ```
         
         
         
-```  [JQAuthorizationTools AudioAuthorizationStatus_AuthorizedBlock:^{                   //已授权
-                    [self alerviewmessage:@"麦克风权限已开启"];
+```
+[JQAuthorizationTools AudioAuthorizationStatus_AuthorizedBlock:^{                   //已授权
+        [self alerviewmessage:@"麦克风权限已开启"];
         
-        } DeniedBlock:^{                                                                    //已关闭
-                    [self alertViewControllerWithmessage:[NSString stringWithFormat:@"麦克风权限未开启 \n 可通过 [设置 -> 隐私 -> 麦克风 - %@] 打开访问开关",_app_name]
-        actionBlock:^(UIAlertAction * _Nonnull action) {
+	} DeniedBlock:^{                                                                    //已关闭
+        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"麦克风权限未开启 \n 可通过 [设置 -> 隐私 -> 麦克风 - %@] 打开访问开关",_app_name]
+	actionBlock:^(UIAlertAction * _Nonnull action) {
         
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-        
-        }];
-        } RestrictedBlock:^{                                                                //限制访问
-                    [self alerviewmessage:@"麦克风访问被限制"];
-        } noAudioBlock:^{                                                                   //未检测到功能
-                    [self alerviewmessage:@"未检测到您的麦克风"];
-        }];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+	
+	}];
+	} RestrictedBlock:^{                                                                //限制访问
+        [self alerviewmessage:@"麦克风访问被限制"];
+	} noAudioBlock:^{                                                                   //未检测到功能
+        [self alerviewmessage:@"未检测到您的麦克风"];
+	}];
         
 ```
       
@@ -157,76 +151,80 @@
 
 
 
-``` #pragma mark             ---   获取日历权限   ---
-        /**
-            authorized         用户允许访问日历
-            restricted         因为系统原因, 无法访问日历
-            denied             用户拒绝当前应用访问日历
-            noEvent            没有检测到日历
-        */
-        + (void)EventAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
-                            DeniedBlock:(void(^)(void))denied
-                            RestrictedBlock:(void(^)(void))restricted
-                            noEventBlock:(void(^)(void))noEvent;
+```
+#pragma mark             ---   获取日历权限   ---
+
+/**
+	authorized         用户允许访问日历
+	restricted         因为系统原因, 无法访问日历
+	denied             用户拒绝当前应用访问日历
+	noEvent            没有检测到日历
+*/
++ (void)EventAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
+	DeniedBlock:(void(^)(void))denied
+	RestrictedBlock:(void(^)(void))restricted
+	noEventBlock:(void(^)(void))noEvent;
         
 ```
         
 
 ```
-        [JQAuthorizationTools EventAuthorizationStatus_AuthorizedBlock:^{                   //已授权
-                [self alerviewmessage:@"日历权限已开启"];
+[JQAuthorizationTools EventAuthorizationStatus_AuthorizedBlock:^{                   //已授权
+        [self alerviewmessage:@"日历权限已开启"];
         
-        } DeniedBlock:^{                                                                    //已关闭
+	} DeniedBlock:^{                                                                    //已关闭
         
-                [self alertViewControllerWithmessage:[NSString stringWithFormat:@"日历权限未开启 \n 可通过 [设置 -> 隐私 -> 日历 - %@] 打开访问开关",_app_name]
-        actionBlock:^(UIAlertAction * _Nonnull action) {
+        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"日历权限未开启 \n 可通过 [设置 -> 隐私 -> 日历 - %@] 打开访问开关",_app_name]
+	actionBlock:^(UIAlertAction * _Nonnull action) {
         
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         
-        }];
-        } RestrictedBlock:^{                                                                //限制访问
-                [self alerviewmessage:@"日历访问被限制"];
-        } noEventBlock:^{                                                                   //未检测到功能
-                [self alerviewmessage:@"未检测到您的日历"];
-        }];
+	}];
+	} RestrictedBlock:^{                                                                //限制访问
+        [self alerviewmessage:@"日历访问被限制"];
+	} noEventBlock:^{                                                                   //未检测到功能
+        [self alerviewmessage:@"未检测到您的日历"];
+	}];
 
 ```
 
 ## 获取/判断通讯录权限
 
 ```
-        /**
-        获取通讯录权限
-            authorized         用户允许访问通讯录
-            restricted         因为系统原因, 无法访问通讯录
-            denied             用户拒绝当前应用访问通讯录
-            noContact          没有检测到通讯录
-        */
-        + (void)ContactAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
-                        DeniedBlock:(void(^)(void))denied
-                        RestrictedBlock:(void(^)(void))restricted
-                        noContactBlock:(void(^)(void))noContact;
+
+/**
+	获取通讯录权限
+	authorized         用户允许访问通讯录
+	restricted         因为系统原因, 无法访问通讯录
+	denied             用户拒绝当前应用访问通讯录
+	noContact          没有检测到通讯录
+*/
+
++ (void)ContactAuthorizationStatus_AuthorizedBlock:(void(^)(void))authorized
+	DeniedBlock:(void(^)(void))denied
+	RestrictedBlock:(void(^)(void))restricted
+	noContactBlock:(void(^)(void))noContact;
 
         
 ```
 
 
 ```
-        [JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
-                [self alerviewmessage:@"通讯录权限已开启"];
+	[JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
+        [self alerviewmessage:@"通讯录权限已开启"];
         
-        } DeniedBlock:^{                                                                      //已关闭
-                [self alertViewControllerWithmessage:[NSString stringWithFormat:@"通讯录权限未开启 \n 可通过 [设置 -> 隐私 -> 通讯录 - %@] 打开访问开关",_app_name]
-        actionBlock:^(UIAlertAction * _Nonnull action) {
+	} DeniedBlock:^{                                                                      //已关闭
+        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"通讯录权限未开启 \n 可通过 [设置 -> 隐私 -> 通讯录 - %@] 打开访问开关",_app_name]
+            actionBlock:^(UIAlertAction * _Nonnull action) {
         
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         }];
-        } RestrictedBlock:^{                                                                  //限制访问
-                [self alerviewmessage:@"通讯录访问被限制"];
+	} RestrictedBlock:^{                                                                  //限制访问
+        [self alerviewmessage:@"通讯录访问被限制"];
         
-        } noContactBlock:^{                                                                   //未检测到功能
-                [self alerviewmessage:@"未检测到您的通讯录"];
-        }];
+	} noContactBlock:^{                                                                   //未检测到功能
+        [self alerviewmessage:@"未检测到您的通讯录"];
+	}];
         
 ```
         
@@ -234,38 +232,37 @@
 ##  判断定位权限
 
 ```
-            /**
-                always             用户允许应用一直允许访问定位
-                WhenInUse          用户只允许在使用应用程序时访问定位
-                denied             用户拒绝当前应用访问定位权限
-                noContact          没有检测到定位权限
-            */
-            + (void)locationAuthorizationStatus_AlwaysBlock:(void(^)(void))always
-                            WhenInUseBlock:(void(^)(void))WhenInUse
-                                DeniedBlock:(void(^)(void))Denied
-                                RestrictedBlock:(void(^)(void))Restricted
-                                noLocationBlock:(void(^)(void))noLocation;
-            
+/**
+	always             用户允许应用一直允许访问定位
+	WhenInUse          用户只允许在使用应用程序时访问定位
+	denied             用户拒绝当前应用访问定位权限
+	noContact          没有检测到定位权限
+*/
+	+ (void)locationAuthorizationStatus_AlwaysBlock:(void(^)(void))always
+        WhenInUseBlock:(void(^)(void))WhenInUse
+        DeniedBlock:(void(^)(void))Denied
+        RestrictedBlock:(void(^)(void))Restricted
+        noLocationBlock:(void(^)(void))noLocation;
  
 ```
 
 
 ```
-            [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
-                    [self alerviewmessage:@"后台定位权限已开启"];
-            } WhenInUseBlock:^{                                                                  //用户允许在程序使用期间访问权限
-                    [self alerviewmessage:@"前台台定位权限已开启"];
-            } DeniedBlock:^{                                                                     //已关闭
-                    [self alertViewControllerWithmessage:[NSString stringWithFormat:@"定位权限未开启 \n 可通过 [设置 -> 隐私 -> 位置 - %@] 设置为 ->始终/使用期间",_app_name]
+    [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
+        [self alerviewmessage:@"后台定位权限已开启"];
+	} WhenInUseBlock:^{                                                                  //用户允许在程序使用期间访问权限
+        [self alerviewmessage:@"前台台定位权限已开启"];
+	} DeniedBlock:^{                                                                     //已关闭
+        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"定位权限未开启 \n 可通过 [设置 -> 隐私 -> 位置 - %@] 设置为 ->始终/使用期间",_app_name]
             actionBlock:^(UIAlertAction * _Nonnull action) {
             
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
             }];
-            } RestrictedBlock:^{                                                                 //限制访问
-                    [self alerviewmessage:@"定位访问被限制"];
-            } noLocationBlock:^{                                                                 //未检测到功能
-                    [self alerviewmessage:@"未检测到您的定位"];
-            }];
+	} RestrictedBlock:^{                                                                 //限制访问
+        [self alerviewmessage:@"定位访问被限制"];
+	} noLocationBlock:^{                                                                 //未检测到功能
+        [self alerviewmessage:@"未检测到您的定位"];
+	}];
 ```
 
 
@@ -276,23 +273,22 @@
                 遵循一下的协议来进行权限的获取
                 
 ```
-                - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-                    switch (status) {
-                        case kCLAuthorizationStatusNotDetermined:
-                        
-                        
-                            if ([manager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
-                                [manager requestAlwaysAuthorization];
-                            }
+	- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+        switch (status) {
+            case kCLAuthorizationStatusNotDetermined:
+	
+             if ([manager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                 [manager requestAlwaysAuthorization];
+                 }
 
-                    两种方法选择一种使用
-                            //if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-                            //  [manager requestWhenInUseAuthorization];
-                            //}
-                            break;
-                        default:
-                            break;
-                    }
-                }
+	两种方法选择一种使用
+            //if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            //  [manager requestWhenInUseAuthorization];
+            //}
+                break;
+	default:
+        break;
+        }
+	}
 ```
 
