@@ -12,8 +12,7 @@
         4.获取/判断日历权限
         5.获取/判断通讯录权限
         6.判断定位权限
-    ```
-    ```
+
         plist 文件设置提示
             <key>NSCalendarsUsageDescription</key>
             <string>请求访问日历</string>
@@ -38,9 +37,15 @@
              2.引入 #import "JQAuthorizationTools.h"
              
              
+             
+![image](https://github.com/seanBoler/JQAuthorizationTools/blob/master/JQAuthorizationTool/authorizationToos.gif)
+
+             
+             
+             
  ## 获取/判断相机访问权限
  
-     ```
+```
          #pragma mark            --- 获取用户相机权限 ---
          /**
              获取用户的相机访问权限。
@@ -55,10 +60,7 @@
                                             StatusRestrictedBlock:(void (^)(void))restricted
                                       EquipmentWithoutCameraBlock:(void (^)(void))noCamera;
  
-     ```
- 
- 
-     ```
+
           [JQAuthorizationTools AVCameraAuthorizationTools_StatusAuthorizedBlock:^{           //已授权
               [self alerviewmessage:@"相机权限已开启"];
           } StatusDeniedBlock:^{                                         //已关闭
@@ -73,12 +75,12 @@
               [self alerviewmessage:@"未检测到您的相机"];
       }];
  
-      ```
+```
       
       
 ## 获取/判断相册权限
 
-        ```
+```
         #pragma mark            ---  获取相册权限  ---
         /**
             authorized         用户允许访问相册
@@ -90,10 +92,10 @@
                                     DeniedBlock:(void(^)(void))denied
                                     RestrictedBlock:(void(^)(void))restricted
                                     noPhotoBlock:(void(^)(void))noPhoto;
-        ```
+```
 
 
-        ```
+ ```
         [JQAuthorizationTools UIImagePickerStatus_AuthorizedBlock:^{                        //已授权
                 [self alerviewmessage:@"相册权限已开启"];
         } DeniedBlock:^{                                                                    //已关闭
@@ -110,13 +112,13 @@
                 [self alerviewmessage:@"未检测到您的相册"];
         }];
         
-        ```
+```
         
         
 ## 获取/判断麦克风权限
 
 
-      ```  #pragma mark            ---   获取麦克风   ---
+```  #pragma mark            ---   获取麦克风   ---
         /**
             authorized         用户允许访问麦克风
             restricted         因为系统原因, 无法访问麦克风
@@ -128,11 +130,11 @@
                              RestrictedBlock:(void(^)(void))restricted
                              noAudioBlock:(void(^)(void))noAudio;
         
-        ```
+```
         
         
         
-      ```  [JQAuthorizationTools AudioAuthorizationStatus_AuthorizedBlock:^{                   //已授权
+```  [JQAuthorizationTools AudioAuthorizationStatus_AuthorizedBlock:^{                   //已授权
                     [self alerviewmessage:@"麦克风权限已开启"];
         
         } DeniedBlock:^{                                                                    //已关闭
@@ -148,14 +150,14 @@
                     [self alerviewmessage:@"未检测到您的麦克风"];
         }];
         
-      ```
+```
       
 
 ## 获取/判断日历权限
 
 
 
-       ``` #pragma mark             ---   获取日历权限   ---
+``` #pragma mark             ---   获取日历权限   ---
         /**
             authorized         用户允许访问日历
             restricted         因为系统原因, 无法访问日历
@@ -167,10 +169,10 @@
                             RestrictedBlock:(void(^)(void))restricted
                             noEventBlock:(void(^)(void))noEvent;
         
-        ```
+```
         
 
-        ```
+```
         [JQAuthorizationTools EventAuthorizationStatus_AuthorizedBlock:^{                   //已授权
                 [self alerviewmessage:@"日历权限已开启"];
         
@@ -188,11 +190,11 @@
                 [self alerviewmessage:@"未检测到您的日历"];
         }];
 
-        ```
+```
 
 ## 获取/判断通讯录权限
 
-        ```
+```
         /**
         获取通讯录权限
             authorized         用户允许访问通讯录
@@ -206,10 +208,10 @@
                         noContactBlock:(void(^)(void))noContact;
 
         
-        ```
+```
 
 
-        ```
+```
         [JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
                 [self alerviewmessage:@"通讯录权限已开启"];
         
@@ -226,12 +228,12 @@
                 [self alerviewmessage:@"未检测到您的通讯录"];
         }];
         
-        ```
+```
         
         
 ##  判断定位权限
 
-            ```
+```
             /**
                 always             用户允许应用一直允许访问定位
                 WhenInUse          用户只允许在使用应用程序时访问定位
@@ -244,11 +246,11 @@
                                 RestrictedBlock:(void(^)(void))Restricted
                                 noLocationBlock:(void(^)(void))noLocation;
             
-            
-            ```
+ 
+```
 
 
-            ```
+```
             [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
                     [self alerviewmessage:@"后台定位权限已开启"];
             } WhenInUseBlock:^{                                                                  //用户允许在程序使用期间访问权限
@@ -264,8 +266,7 @@
             } noLocationBlock:^{                                                                 //未检测到功能
                     [self alerviewmessage:@"未检测到您的定位"];
             }];
-            
-            ```
+```
 
 
 ### 定位权限的获取需要单独拿出来设置
@@ -274,7 +275,7 @@
                 AppDelegate 代理去设置CLLocationManager
                 遵循一下的协议来进行权限的获取
                 
-            ```
+```
                 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
                     switch (status) {
                         case kCLAuthorizationStatusNotDetermined:
@@ -291,7 +292,7 @@
                             break;
                         default:
                             break;
+                    }
                 }
+```
 
-            ```
-}
