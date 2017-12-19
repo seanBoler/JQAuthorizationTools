@@ -269,9 +269,9 @@
 ### 定位权限的获取需要单独拿出来设置
 
 
-                AppDelegate 代理去设置CLLocationManager
-                遵循一下的协议来进行权限的获取
-                
+###	AppDelegate 代理去设置CLLocationManager
+### 遵循一下的协议来进行权限的获取
+	
 ```
 	- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
         switch (status) {
