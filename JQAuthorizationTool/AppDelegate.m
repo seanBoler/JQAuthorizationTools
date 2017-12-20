@@ -37,6 +37,8 @@
 }
 
 
+
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     switch (status) {
         case kCLAuthorizationStatusNotDetermined:
