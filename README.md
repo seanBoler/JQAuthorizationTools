@@ -13,11 +13,15 @@
         5.获取/判断通讯录权限
         6.判断定位权限
 
-        plist 文件设置提示
+
+
+	苹果对权限获取的请求，要求详细的描述使用的功能
+       
+       plist 文件设置提示
+	     <key>NSCameraUsageDescription</key>
+            <string>需要访问您的相机，以便您正常使用拍照、扫码、扫红包等功能</string>
             <key>NSCalendarsUsageDescription</key>
             <string>请求访问日历</string>
-            <key>NSCameraUsageDescription</key>
-            <string>请求访问相机</string>
             <key>NSContactsUsageDescription</key>
             <string>请求访问通讯录</string>
             <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
