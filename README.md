@@ -40,7 +40,10 @@
       使用：1.直接将AuthorizationTool 文件拖入项目
              2.引入 #import "JQAuthorizationTools.h"
              
-             
+
+![image](https://github.com/seanBoler/JQAuthorizationTools/blob/master/JQAuthorizationTool/authorizationToos.gif)
+
+
  ## 获取/判断相机访问权限
  
 ```
