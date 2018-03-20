@@ -1,53 +1,52 @@
 # JQAuthorizationTools
+## 获取用户权限
 
-
-###  获取用户权限
-
-
-    ```
-    功能：
-        1.获取/判断相机权限
-        2.获取/判断相册权限
-        3.获取/判断麦克风权限
-        4.获取/判断日历权限
-        5.获取/判断通讯录权限
-        6.判断定位权限
+-    功能介绍：  
+- 1.获取/判断相机权限
+- 2.获取/判断相册权限
+- 3.获取/判断麦克风权限
+- 4.获取/判断日历权限
+- 5.获取/判断通讯录权限
+- 6.判断定位权限
 
 
 
-	苹果对权限获取的请求，要求详细的描述使用的功能
+`苹果对权限获取的请求，要求详细的描述使用的功能 （苹果对用户权限的提示要求详细化说明， 要简要说明调取说明功能用来干什么 ）`
+      
+## plist 文件设置提示:
        
-       plist 文件设置提示
-	     <key>NSCameraUsageDescription</key>
-            <string>需要访问您的相机，以便您正常使用拍照、扫码、扫红包等功能</string>
-            <key>NSCalendarsUsageDescription</key>
-            <string>请求访问日历</string>
-            <key>NSContactsUsageDescription</key>
-            <string>请求访问通讯录</string>
-            <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-            <string>请求使用您的定位功能</string>
-            <key>NSLocationAlwaysUsageDescription</key>
-            <string>始终访问地理位置</string>
-            <key>NSLocationWhenInUseUsageDescription</key>
-            <string>在使用期间访问地理位置</string>
-            <key>NSMicrophoneUsageDescription</key>
-            <string>请求访问麦克风</string>
-            <key>NSPhotoLibraryUsageDescription</key>
-            <string>请求访问相册</string>
-    ```
-
-
-      使用：1.直接将AuthorizationTool 文件拖入项目
-             2.引入 #import "JQAuthorizationTools.h"
-             
-
+`<key>NSCameraUsageDescription</key>`
+`<string>需要访问您的相机，以便您正常使用拍照、扫码、扫红包等功能</string>`
+`<key>NSCalendarsUsageDescription</key>`
+`<string>请求访问日历</string>`
+`<key>NSContactsUsageDescription</key>`
+`<string>请求访问通讯录</string>`
+`<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>`
+`<string>请求使用您的定位功能</string>`
+`<key>NSLocationAlwaysUsageDescription</key>`
+`<string>始终访问地理位置</string>`
+`<key>NSLocationWhenInUseUsageDescription</key>`
+`<string>在使用期间访问地理位置</string>`
+`<key>NSMicrophoneUsageDescription</key>`
+`<string>请求访问麦克风</string>`
+`<key>NSPhotoLibraryUsageDescription</key>`
+`<string>请求访问相册</string>`
+          
+          
 ![image](https://github.com/seanBoler/JQAuthorizationTools/blob/master/JQAuthorizationTool/authorizationToos.gif)
 
 
- ## 获取/判断相机访问权限
- 
+
+###  使用：
+-  1.直接将AuthorizationTool 文件拖入项目
+-  2.引入 #import "JQAuthorizationTools.h"
+
+****
+
+## 获取/判断相机访问权限
+
 ```
-#pragma mark            --- 获取用户相机权限 ---
+
 /**
 	获取用户的相机访问权限。
 	authorized     用户允许访问相机
@@ -78,7 +77,7 @@
       
       
 ## 获取/判断相册权限
-
+***
 ```
 #pragma mark            ---  获取相册权限  ---
 /**
@@ -113,10 +112,8 @@
         
 ```
         
-        
 ## 获取/判断麦克风权限
-
-
+***
 ```
 #pragma mark            ---   获取麦克风   ---
 /**
@@ -131,33 +128,9 @@
 	noAudioBlock:(void(^)(void))noAudio;
         
 ```
-        
-        
-        
-```
-[JQAuthorizationTools AudioAuthorizationStatus_AuthorizedBlock:^{                   //已授权
-        [self alerviewmessage:@"麦克风权限已开启"];
-        
-	} DeniedBlock:^{                                                                    //已关闭
-        [self alertViewControllerWithmessage:[NSString stringWithFormat:@"麦克风权限未开启 \n 可通过 [设置 -> 隐私 -> 麦克风 - %@] 打开访问开关",_app_name]
-	actionBlock:^(UIAlertAction * _Nonnull action) {
-        
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
-	
-	}];
-	} RestrictedBlock:^{                                                                //限制访问
-        [self alerviewmessage:@"麦克风访问被限制"];
-	} noAudioBlock:^{                                                                   //未检测到功能
-        [self alerviewmessage:@"未检测到您的麦克风"];
-	}];
-        
-```
-      
 
 ## 获取/判断日历权限
-
-
-
+***
 ```
 #pragma mark             ---   获取日历权限   ---
 
@@ -196,6 +169,7 @@
 ```
 
 ## 获取/判断通讯录权限
+***
 
 ```
 
@@ -217,7 +191,7 @@
 
 
 ```
-	[JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
+[JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
         [self alerviewmessage:@"通讯录权限已开启"];
         
 	} DeniedBlock:^{                                                                      //已关闭
@@ -237,7 +211,7 @@
         
         
 ##  判断定位权限
-
+***
 ```
 /**
 	always             用户允许应用一直允许访问定位
@@ -255,7 +229,7 @@
 
 
 ```
-    [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
+ [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
         [self alerviewmessage:@"后台定位权限已开启"];
 	} WhenInUseBlock:^{                                                                  //用户允许在程序使用期间访问权限
         [self alerviewmessage:@"前台台定位权限已开启"];
@@ -273,14 +247,14 @@
 ```
 
 
-### 定位权限的获取需要单独拿出来设置
+## 定位权限的获取需要单独拿出来设置
+***
 
-
-###	AppDelegate 代理去设置CLLocationManager
-### 遵循一下的协议来进行权限的获取
+* AppDelegate 代理去设置CLLocationManager
+* 遵循一下的协议来进行权限的获取
 
 ```
-	- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
         switch (status) {
             case kCLAuthorizationStatusNotDetermined:
 	
@@ -288,13 +262,13 @@
                  [manager requestAlwaysAuthorization];
                  }
 
-	两种方法选择一种使用
+	          两种方法选择一种使用
             //if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
             //  [manager requestWhenInUseAuthorization];
             //}
                 break;
-	default:
-        break;
+	    default:
+                break;
         }
 	}
 ```
