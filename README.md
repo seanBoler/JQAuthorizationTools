@@ -10,25 +10,32 @@
 - 6.判断定位权限
 
 
-
-`苹果对权限获取的请求，要求详细的描述使用的功能 （苹果对用户权限的提示要求详细化说明， 要简要说明调取说明功能用来干什么 ）`
+`苹果对权限获取的请求，要求详细的描述使用的功能 （苹果对用户权限的提示要求详细化说明， 要简要说明调取说明功能用来干什么 ）
       
 ## plist 文件设置提示:
        
+- <key>NSCameraUsageDescription</key>
 `<key>NSCameraUsageDescription</key>`
 `<string>需要访问您的相机，以便您正常使用拍照、扫码、扫红包等功能</string>`
+- <key>NSCalendarsUsageDescription</key>
 `<key>NSCalendarsUsageDescription</key>`
 `<string>请求访问日历</string>`
+- <key>NSContactsUsageDescription</key>
 `<key>NSContactsUsageDescription</key>`
 `<string>请求访问通讯录</string>`
+- <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 `<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>`
 `<string>请求使用您的定位功能</string>`
+- <key>NSLocationAlwaysUsageDescription</key>
 `<key>NSLocationAlwaysUsageDescription</key>`
 `<string>始终访问地理位置</string>`
+- <key>NSLocationWhenInUseUsageDescription</key>
 `<key>NSLocationWhenInUseUsageDescription</key>`
 `<string>在使用期间访问地理位置</string>`
+- <key>NSMicrophoneUsageDescription</key>
 `<key>NSMicrophoneUsageDescription</key>`
 `<string>请求访问麦克风</string>`
+- <key>NSPhotoLibraryUsageDescription</key>
 `<key>NSPhotoLibraryUsageDescription</key>`
 `<string>请求访问相册</string>`
           
