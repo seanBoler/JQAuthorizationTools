@@ -52,7 +52,7 @@
 
 ## 获取/判断相机访问权限
 
-```
+``` objc
 
 /**
 	获取用户的相机访问权限。
@@ -62,6 +62,7 @@
 	noCamera       没有检测到相机
 */
          
+
 + (void)AVCameraAuthorizationTools_StatusAuthorizedBlock:(void (^)(void))authorized
          StatusDeniedBlock:(void (^)(void))denied
 	StatusRestrictedBlock:(void (^)(void))restricted
@@ -85,7 +86,7 @@
       
 ## 获取/判断相册权限
 ***
-```
+``` objc
 #pragma mark            ---  获取相册权限  ---
 /**
 	authorized         用户允许访问相册
@@ -100,7 +101,7 @@
 ```
 
 
- ```
+``` objc
 	[JQAuthorizationTools UIImagePickerStatus_AuthorizedBlock:^{                        //已授权
         [self alerviewmessage:@"相册权限已开启"];
 	} DeniedBlock:^{                                                                    //已关闭
@@ -121,7 +122,7 @@
         
 ## 获取/判断麦克风权限
 ***
-```
+``` objc
 #pragma mark            ---   获取麦克风   ---
 /**
 	authorized         用户允许访问麦克风
@@ -138,7 +139,7 @@
 
 ## 获取/判断日历权限
 ***
-```
+``` objc
 #pragma mark             ---   获取日历权限   ---
 
 /**
@@ -155,7 +156,7 @@
 ```
         
 
-```
+``` objc
 [JQAuthorizationTools EventAuthorizationStatus_AuthorizedBlock:^{                   //已授权
         [self alerviewmessage:@"日历权限已开启"];
         
@@ -178,7 +179,7 @@
 ## 获取/判断通讯录权限
 ***
 
-```
+``` objc
 
 /**
 	获取通讯录权限
@@ -196,8 +197,7 @@
         
 ```
 
-
-```
+``` objc
 [JQAuthorizationTools ContactAuthorizationStatus_AuthorizedBlock:^{                   //已授权
         [self alerviewmessage:@"通讯录权限已开启"];
         
@@ -219,7 +219,7 @@
         
 ##  判断定位权限
 ***
-```
+``` objc
 /**
 	always             用户允许应用一直允许访问定位
 	WhenInUse          用户只允许在使用应用程序时访问定位
@@ -235,7 +235,7 @@
 ```
 
 
-```
+``` objc
  [JQAuthorizationTools locationAuthorizationStatus_AlwaysBlock:^{                     //用户允许一直访问定位权限
         [self alerviewmessage:@"后台定位权限已开启"];
 	} WhenInUseBlock:^{                                                                  //用户允许在程序使用期间访问权限
@@ -260,7 +260,7 @@
 * AppDelegate 代理去设置CLLocationManager
 * 遵循一下的协议来进行权限的获取
 
-```
+``` objc
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
         switch (status) {
             case kCLAuthorizationStatusNotDetermined:
